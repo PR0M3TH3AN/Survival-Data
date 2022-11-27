@@ -11,4 +11,4 @@ Steps to have a searchable offline directory from this repo:
 
 Good luck!
  
-- thePR0M3TH3AN
+- PR0M3TH3AN
