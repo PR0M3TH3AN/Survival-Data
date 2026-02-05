@@ -10,7 +10,7 @@ The Survival Data project is a valuable resource for anyone interested in emerge
 
 ### Live Demo
 
-You can access the live version of the survival database online at: [Survival Data](https://survival-data.netlify.app/)
+You can access the live version of the survival database online at: [Survival Data](https://survival-data-e3zc.ipfs.4everland.app)
 
 ## Features
 
