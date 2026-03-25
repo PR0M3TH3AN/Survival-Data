@@ -1,383 +1,407 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Survival Guide</title>
-		<link rel="stylesheet" href="styles.css">
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-				const sections = document.querySelectorAll("section h2");
-				sections.forEach(section => {
-					section.addEventListener("click", function() {
-						const ul = this.nextElementSibling;
-						ul.style.display = ul.style.display === "none" ? "block" : "none";
-					});
-				});
-			});
-		</script>
-	</head>
-<body>
-    <header>
-        <h1>Survival Guide</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Library | Digital Preparedness</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 group">
+                    <div class="p-3 bg-emerald-600 rounded-2xl shadow-lg shadow-emerald-200">
+                        <i data-lucide="shield" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-black tracking-tight text-slate-800 uppercase">
+                            Survival<span class="text-emerald-600">Library</span>
+                        </h1>
+                        <p class="text-slate-500 text-sm font-medium">Digital Preparedness Repository</p>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="relative flex-1 max-w-lg">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i data-lucide="search" class="h-5 w-5 text-slate-400"></i>
+                    </div>
+                    <input
+                        id="searchInput"
+                        type="text"
+                        placeholder="Search resources, manuals, tactics..."
+                        class="block w-full pl-12 pr-4 py-3.5 bg-slate-100 border-none rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:bg-white transition-all outline-none text-slate-700 shadow-inner"
+                    >
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div id="filterBar" class="mt-8 flex flex-wrap items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                <button onclick="filterCategory('All')" class="category-pill active px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap bg-slate-800 text-white shadow-md" data-category="All">
+                    All Library
+                </button>
+                <!-- JS will inject more pills here -->
+            </div>
+        </div>
     </header>
-    <main>
-        <section id="Basics">
-			<h2>Basics</h2>
-			<ul>
-				<li><a href="HOME/Basics/How-to-Find-Your-Way.pdf" target="_blank">How to Find Your Way</a></li>
-				<li><a href="HOME/Basics/SAS.Survival.Handbook.pdf" target="_blank">SAS Survival Handbook</a></li>
-				<li><a href="HOME/Basics/The-SAS-Self-Defense Handbook (John Lofty Wiseman).pdf" target="_blank">The SAS Self-Defense Handbook (John Lofty Wiseman)</a></li>
-				<li><a href="HOME/Basics/US-Army-Survival-Manual.pdf" target="_blank">US Army Survival Manual</a></li>
-			</ul>
-			
-		<section id="Edible-and-Medicinal-Plants">
-				<h2>Edible and Medicinal Plants</h2>
-				<ul>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/A-Complete-Handbook-of-Nature-Cures.pdf" target="_blank">A Complete Handbook of Nature Cures</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Anticancer-Therapeutics.pdf" target="_blank">Anticancer Therapeutics</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Common-Edible-Mushrooms.pdf" target="_blank">Common Edible Mushrooms</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Crow-Indian-Recipes-Herbal-Medicines.pdf" target="_blank">Crow Indian Recipes & Herbal Medicines</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Dale-Pendell-Pharmako-Poeia.pdf" target="_blank">Dale Pendell Pharmako/Poeia</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Edible-and-Medicinal-Plants.pdf" target="_blank">Edible and Medicinal Plants</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Edible-Wild-Plants.pdf" target="_blank">Edible Wild Plants</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Ethnobotany-of-the-Forest-Indians.pdf" target="_blank">Ethnobotany of the Forest Indians</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Healing-Pets-With-Alternative-Medicine.pdf" target="_blank">Healing Pets With Alternative Medicine</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Herbal-PDRsmall.pdf" target="_blank">Herbal PDR</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Medicinal-Plants-in-Folk-Tradition-2004-Allen-Hatfield.pdf" target="_blank">Medicinal Plants in Folk Tradition (2004) - Allen & Hatfield</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Survival-Edible-Medicinal-Plants.pdf" target="_blank">Survival: Edible & Medicinal Plants</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/survival-how-to-make-herbal-preparations.pdf" target="_blank">Survival: How to Make Herbal Preparations</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Survival-Medicine.pdf" target="_blank">Survival Medicine</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/Useful-Wild-Plants-of-the-United-States-and-Canada.pdf" target="_blank">Useful Wild Plants of the United States and Canada</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants-Vol-2.pdf" target="_blank">WHO Monographs on Selected Medicinal Plants - Vol 2</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants-Vol-3.pdf" target="_blank">WHO Monographs on Selected Medicinal Plants - Vol 3</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants-Volume-4.pdf" target="_blank">WHO Monographs on Selected Medicinal Plants - Vol 4</a></li>
-					<li><a href="HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants.pdf" target="_blank">WHO Monographs on Selected Medicinal Plants</a></li>
-				</ul>
-		</section>
-			
-		<section id="Electronics">
-				<h2>Electronics</h2>
-				<ul>
-					<li><a href="HOME/Electronics/The-Prepper-Phone.pdf" target="_blank">The Prepper Phone</a></li>
-				</ul>
-		</section>
-			
-        <section id="Food-Preservation">
-			<h2>Food Preservation</h2>
-			<ul>
-				<li><a href="HOME/Food-Preservation/Canning-Foods.pdf" target="_blank">Canning Foods</a></li>
-				<li><a href="HOME/Food-Preservation/Fermenting_Recipe_Guidebook.pdf" target="_blank">Fermenting Recipe Guidebook</a></li>
-				<li><a href="HOME/Food-Preservation/Jerky-Recipes.pdf" target="_blank">Jerky Recipes</a></li>
-				<li><a href="HOME/Food-Preservation/Preparing-and-Canning-Fermented-Foods-and-Pickled-Vegtables.pdf" target="_blank">Preparing and Canning Fermented Foods and Pickled Vegetables</a></li>
-				<li><a href="HOME/Food-Preservation/Preservation_of_Fish_and_Meat.pdf" target="_blank">Preservation of Fish and Meat</a></li>
-				<li><a href="HOME/Food-Preservation/Preserving-Food-Drying-Fruits-And-Vegetables-.pdf" target="_blank">Preserving Food: Drying Fruits and Vegetables</a></li>
-				<li><a href="HOME/Food-Preservation/SmallScale-Food-Drying-Technologies.pdf" target="_blank">Small Scale Food Drying Technologies</a></li>
-				<li><a href="HOME/Food-Preservation/Solar-Dehydrator.pdf" target="_blank">Solar Dehydrator</a></li>
-				<li><a href="HOME/Food-Preservation/Traditional-Fermented-Food-and-Beverages.pdf" target="_blank">Traditional Fermented Food and Beverages</a></li>
-			</ul>
-		</section>
-		
-        <section id="Food-Production-and-Recipes">
-			<h2>Food Production & Recipes</h2>
-			<ul>
-				<li><a href="HOME/Food-Production-&-Recipes/almanac-start-a-garden.pdf" target="_blank">Almanac: Start a Garden</a></li>
-				<li><a href="HOME/Food-Production-&-Recipes/Backyard-Composting-Basics.pdf" target="_blank">Backyard Composting Basics</a></li>
-				<li><a href="HOME/Food-Production-&-Recipes/Black-&-Decker-The-Complete-Guide-to-Northeast-Gardening.pdf" target="_blank">Black & Decker: The Complete Guide to Northeast Gardening</a></li>
-				<li><a href="HOME/Food-Production-&-Recipes/colonial-garden-plants.pdf" target="_blank">Colonial Garden Plants</a></li>
-				<li><a href="HOME/Food-Production-&-Recipes/Complete-Guide-to-Home-Composting.pdf" target="_blank">Complete Guide to Home Composting</a></li>
-				<li><a href="HOME/Food-Production-&-Recipes/seed_saving_guide.pdf" target="_blank">Seed Saving Guide</a></li>
-				<li><a href="HOME/Food-Production-&-Recipes/Worm-Factory-360-Manual.pdf" target="_blank">Worm Factory 360 Manual</a></li>
-			</ul>
-		</section>
-		
-        <section id="Foraging">
-			<h2>Foraging</h2>
-			<ul>
-				<li><a href="HOME/Foraging/a-mini-foraging-guide.pdf" target="_blank">A Mini Foraging Guide</a></li>
-				<li><a href="HOME/Foraging/Alaska-Forage-Manual.pdf" target="_blank">Alaska Forage Manual</a></li>
-				<li><a href="HOME/Foraging/Colorado-forage-guide.pdf" target="_blank">Colorado Forage Guide</a></li>
-				<li><a href="HOME/Foraging/Edible-and-Poisonous-Mushroom-Guide.pdf" target="_blank">Edible and Poisonous Mushroom Guide</a></li>
-				<li><a href="HOME/Foraging/Guide-to-Common-Macrofungi-in-Eastern-Forests.pdf" target="_blank">Guide to Common Macrofungi in Eastern Forests</a></li>
-				<li><a href="HOME/Foraging/Guide-to-Wild-Edible-Plants-Directory.pdf" target="_blank">Guide to Wild Edible Plants Directory</a></li>
-				<li><a href="HOME/Foraging/Mushrooms-From-Forest-to-Plate.pdf" target="_blank">Mushrooms From Forest to Plate</a></li>
-				<li><a href="HOME/Foraging/Ontario_Nature_Forest_Foraging_Guide_official.pdf" target="_blank">Ontario Nature Forest Foraging Guide</a></li>
-				<li><a href="HOME/Foraging/Pocket-Guide-to-Riverside-Foraging.pdf" target="_blank">Pocket Guide to Riverside Foraging</a></li>
-				<li><a href="HOME/Foraging/Pocket-Guide-to-Urban-Foraging.pdf" target="_blank">Pocket Guide to Urban Foraging</a></li>
-				<li><a href="HOME/Foraging/Shellfish-Foraging-Guide-to-Port-Susan-and-South-Skigit-Bay.pdf" target="_blank">Shellfish Foraging Guide to Port Susan and South Skagit Bay</a></li>
-				<li><a href="HOME/Foraging/Urban-Foraging.pdf" target="_blank">Urban Foraging</a></li>
-			</ul>
-		</section>
-		
-        <section id="How-to-and-Bushcraft">
-			<h2>How-to and Bushcraft</h2>
-			<ul>
-				<li><a href="HOME/How-to-and-Bushcraft/Australian-Bushcraft.pdf" target="_blank">Australian Bushcraft</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Backcountry-Cookbook.pdf" target="_blank">Backcountry Cookbook</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/boyscout-cookbook.pdf" target="_blank">Boy Scout Cookbook</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/bushcraft-leather-work.pdf" target="_blank">Bushcraft Leather Work</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Bushcraft-Scouting-Woodlore-Notes.pdf" target="_blank">Bushcraft Scouting Woodlore Notes</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Combat-Conditioning-Manual-JiuJitsu-Lt-Col-RE-Hanley-USMC.pdf" target="_blank">Combat Conditioning Manual Jiu Jitsu - Lt. Col. RE Hanley, USMC</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/dutch-oven-cookbook.pdf" target="_blank">Dutch Oven Cookbook</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Flintknapping-book.pdf" target="_blank">Flintknapping Book</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Foxfire-One.pdf" target="_blank">Foxfire One</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Foxfire-Three.pdf" target="_blank">Foxfire Three</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Foxfire-Two.pdf" target="_blank">Foxfire Two</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Hand-to-Hand-Combat-Martial-Arts-Aikido.pdf" target="_blank">Hand to Hand Combat Martial Arts Aikido</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Krav-Maga-Pressure-Points-Military-Hand-to-Hand-Combat-Guide.pdf" target="_blank">Krav Maga Pressure Points Military Hand-to-Hand Combat Guide</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Marine-Martial-Arts-Training-.pdf" target="_blank">Marine Martial Arts Training</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Metal-Forming.pdf" target="_blank">Metal Forming</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Native-Berry-Recipes.pdf" target="_blank">Native Berry Recipes</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Navy-Seal-Physical-Fitness-Guide.pdf" target="_blank">Navy Seal Physical Fitness Guide</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/out-of-captivity.pdf" target="_blank">Out of Captivity</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Practical-Guide-to-Free-Energy-Devices-PJ-0.pdf" target="_blank">Practical Guide to Free Energy Devices PJ-0</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Practical-Unarmed-Combat-by-Moshe-Feldenkrais.pdf" target="_blank">Practical Unarmed Combat by Moshe Feldenkrais</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Preparing-And-Canning-Fermented-Food-And-Pickled-Vegetables-.pdf" target="_blank">Preparing and Canning Fermented Food and Pickled Vegetables</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Preserving-Food-Drying-Fruits-And-Vegetables-.pdf" target="_blank">Preserving Food: Drying Fruits and Vegetables</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Pressure-Points-Military-Hand-to-Hand-Combat-Guide.pdf" target="_blank">Pressure Points Military Hand-to-Hand Combat Guide</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Radio-Monitoring-a-How-to-Guide.pdf" target="_blank">Radio Monitoring: A How-to Guide</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Secret-Hiding-Places.pdf" target="_blank">Secret Hiding Places</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Shelters-Shacks-Shanties-Daniel-Carter-Beard.pdf" target="_blank">Shelters, Shacks, Shanties - Daniel Carter Beard</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/SmallScale-Food-Drying-Technologies.pdf" target="_blank">Small Scale Food Drying Technologies</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Solar-Dehydrator.pdf" target="_blank">Solar Dehydrator</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Steal-This-Book.pdf" target="_blank">Steal This Book</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Tecumseh-Service-Manual.pdf" target="_blank">Tecumseh Service Manual</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Baby-Food.pdf" target="_blank">The Baby Food</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Back-Country-Recipe-Book.pdf" target="_blank">The Back Country Recipe Book</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Book-of-Camplore-and-Woodcraft-Dan-Beard.pdf" target="_blank">The Book of Camplore and Woodcraft - Dan Beard</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Complete-Guide-to-Home-Carpentry.pdf" target="_blank">The Complete Guide to Home Carpentry</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Jerky-Chef.pdf" target="_blank">The Jerky Chef</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Journals-of-Lewis-and-Clark-by-Meriwether-Lewis.pdf" target="_blank">The Journals of Lewis and Clark by Meriwether Lewis</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Making-of-Leather-by-Procter-Makingofleather00procrich.pdf" target="_blank">The Making of Leather by Procter</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-New-Complete-Book-of-Food.pdf" target="_blank">The New Complete Book of Food</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Ten-Bushcraft-Books.pdf" target="_blank">The Ten Bushcraft Books</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/The-Unofficial-MacGyver-HowTo-Handbook-Revised-2nd-Edition.pdf" target="_blank">The Unofficial MacGyver How-To Handbook (Revised 2nd Edition)</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/US-Army-Combatives-handtohand-combat-FM-325-150.pdf" target="_blank">US Army Combatives: Hand-to-Hand Combat FM 3-25.150</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/US-Marine-Corps-Hand-to-Hand-Combat.pdf" target="_blank">US Marine Corps Hand-to-Hand Combat</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/US-Marines-Close-Quarters-Combat-Manual-FMFM-07.pdf" target="_blank">US Marines Close Quarters Combat Manual FMFM-07</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/USDA-utah-can-guide-05.pdf" target="_blank">USDA Utah Can Guide 05</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/USMC-Kill-or-Get-Killed.pdf" target="_blank">USMC Kill or Get Killed</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Vegetable-Garden-Encyclopedia.pdf" target="_blank">Vegetable Garden Encyclopedia</a></li>
-				<li><a href="HOME/How-to-and-Bushcraft/Woodsman-Ship.pdf" target="_blank">Woodsman Ship</a></li>
-			</ul>
-		</section>
-		
-        <section id="Hunting-and-Trapping">
-			<h2>Hunting & Trapping</h2>
-			<ul>
-				<li><a href="HOME/Hunting-&-Trapping/basic-hunting-booklet.pdf" target="_blank">Basic Hunting Booklet</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Basics_of_Waterfowling.pdf" target="_blank">Basics of Waterfowling</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/deadfall-snares.pdf" target="_blank">Deadfall Snares</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/deer-hunting-basics.pdf" target="_blank">Deer Hunting Basics</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Dove-Hunting-for-Beginners.pdf" target="_blank">Dove Hunting for Beginners</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Duck-Hunting-Tips-for-Beginners.pdf" target="_blank">Duck Hunting Tips for Beginners</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Fox-Hunting-Basics.pdf" target="_blank">Fox Hunting Basics</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/The-Basics-of-Elk-Hunting-in-Washington.pdf" target="_blank">The Basics of Elk Hunting in Washington</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/The-Basics-of-Turkey-Hunting-In-Washington.pdf" target="_blank">The Basics of Turkey Hunting in Washington</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Trapper-Education-Manual.pdf" target="_blank">Trapper Education Manual</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Traps-and-snares.pdf" target="_blank">Traps and Snares</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/Tricks-of-Trapping.pdf" target="_blank">Tricks of Trapping</a></li>
-				<li><a href="HOME/Hunting-&-Trapping/whitetail-deer-hunting.pdf" target="_blank">Whitetail Deer Hunting</a></li>
-			</ul>
-		</section>
-		
-        <section id="Knots">
-			<h2>Knots</h2>
-			<ul>
-				<li><a href="HOME/Knots/basic-book-of-knots-and-lashings.pdf" target="_blank">Basic Book of Knots and Lashings</a></li>
-				<li><a href="HOME/Knots/Encyclopedia-of-Knots.pdf" target="_blank">Encyclopedia of Knots</a></li>
-				<li><a href="HOME/Knots/Essential-Fishing-knots.pdf" target="_blank">Essential Fishing Knots</a></li>
-				<li><a href="HOME/Knots/Fishing-Knots-Tying-How-to-Tie-a-Knot-Knotting.pdf" target="_blank">Fishing Knots: Tying How to Tie a Knot</a></li>
-				<li><a href="HOME/Knots/Handbook-of-Knots-Splices.pdf" target="_blank">Handbook of Knots & Splices</a></li>
-				<li><a href="HOME/Knots/Knots-and-String.pdf" target="_blank">Knots and String</a></li>
-				<li><a href="HOME/Knots/Knots-by-Andrew-Adamides.pdf" target="_blank">Knots by Andrew Adamides</a></li>
-				<li><a href="HOME/Knots/Knots-for-Mountaineering-Camping-Climbing-Utility-Rescue-Etc.pdf" target="_blank">Knots for Mountaineering, Camping, Climbing, Utility, Rescue, Etc.</a></li>
-				<li><a href="HOME/Knots/Knots-Illustrated-Practical-Guide.pdf" target="_blank">Knots Illustrated Practical Guide</a></li>
-				<li><a href="HOME/Knots/Knots-Splices-and-Rope-Work-.pdf" target="_blank">Knots, Splices, and Rope Work</a></li>
-				<li><a href="HOME/Knots/Knots-Splices-and-Rope-Work.pdf" target="_blank">Knots, Splices, and Rope Work</a></li>
-				<li><a href="HOME/Knots/Knots-Splices-Attachments-and-Ladders.pdf" target="_blank">Knots, Splices, Attachments, and Ladders</a></li>
-				<li><a href="HOME/Knots/Knots-Splices-Attachments.pdf" target="_blank">Knots, Splices, Attachments</a></li>
-				<li><a href="HOME/Knots/Knots.pdf" target="_blank">Knots</a></li>
-				<li><a href="HOME/Knots/Pioneering-Knots-and-Lashings.pdf" target="_blank">Pioneering Knots and Lashings</a></li>
-				<li><a href="HOME/Knots/Ropes-Knots-Ladders-Lashings-Anchorages.pdf" target="_blank">Ropes, Knots, Ladders, Lashings, Anchorages</a></li>
-				<li><a href="HOME/Knots/Sea-Scout-Knots.pdf" target="_blank">Sea Scout Knots</a></li>
-				<li><a href="HOME/Knots/Tying-Farm-Knots.pdf" target="_blank">Tying Farm Knots</a></li>
-				<li><a href="HOME/Knots/What-Knot-Useful-Knots-for-Scouting-and-Climbing-Martin-Stone.pdf" target="_blank">What Knot: Useful Knots for Scouting and Climbing - Martin Stone</a></li>
-			</ul>
-		</section>
-		
-        <section id="Medicine">
-			<h2>Medicine</h2>
-			<ul>
-				<li><a href="HOME/Medicine/A-Book-for-Midwives.pdf" target="_blank">A Book for Midwives</a></li>
-				<li><a href="HOME/Medicine/Emergency-War-Surgery.pdf" target="_blank">Emergency War Surgery</a></li>
-				<li><a href="HOME/Medicine/Full-First-Aid-Manual-FM-2111.pdf" target="_blank">Full First Aid Manual FM 21-11</a></li>
-				<li><a href="HOME/Medicine/Full-First-Aid-Manual.pdf" target="_blank">Full First Aid Manual</a></li>
-				<li><a href="HOME/Medicine/HHS-Pandemic-Influenza-Plan.pdf" target="_blank">HHS Pandemic Influenza Plan</a></li>
-				<li><a href="HOME/Medicine/Medical-Survival-Wound-Closure-Manual.pdf" target="_blank">Medical Survival Wound Closure Manual</a></li>
-				<li><a href="HOME/Medicine/Survival-and-Austere-Medicine.pdf" target="_blank">Survival and Austere Medicine</a></li>
-				<li><a href="HOME/Medicine/survival-personal-wilderness-medical-kit.pdf" target="_blank">Survival Personal Wilderness Medical Kit</a></li>
-				<li><a href="HOME/Medicine/Where-There-is-No-Dentist-Murray-Dickson.pdf" target="_blank">Where There is No Dentist - Murray Dickson</a></li>
-				<li><a href="HOME/Medicine/Where-There-is-No-Dentist.pdf" target="_blank">Where There is No Dentist</a></li>
-				<li><a href="HOME/Medicine/Where_there_is_no_doctor.pdf" target="_blank">Where There is No Doctor</a></li>
-				<li><a href="HOME/Medicine/Wilderness-Medicine-Course.pdf" target="_blank">Wilderness Medicine Course</a></li>
-			</ul>
-		</section>
-		
-        <section id="Military-Manuals">
-			<h2>Military Manuals</h2>
-			<ul>
-				<li><a href="HOME/Military-Manuals/Arctic-SubArctic-SurvivalB-GL-323-003-FP-001.pdf" target="_blank">Arctic/SubArctic Survival B-GL-323-003-FP-001</a></li>
-				<li><a href="HOME/Military-Manuals/Army-fm20-3-Camouflage-Concealment-and-Decoys.pdf" target="_blank">Army FM 20-3: Camouflage, Concealment, and Decoys</a></li>
-				<li><a href="HOME/Military-Manuals/Army-fm3-06-Urban-Operations.pdf" target="_blank">Army FM 3-06: Urban Operations</a></li>
-				<li><a href="HOME/Military-Manuals/Army-fm31-70-Basic-Cold-Weather-Manual.pdf" target="_blank">Army FM 31-70: Basic Cold Weather Manual</a></li>
-				<li><a href="HOME/Military-Manuals/Army-fm5-103-Survivability.pdf" target="_blank">Army FM 5-103: Survivability</a></li>
-				<li><a href="HOME/Military-Manuals/Army-fm5-426-Carpentry.pdf" target="_blank">Army FM 5-426: Carpentry</a></li>
-				<li><a href="HOME/Military-Manuals/Army-fm5-428-Concrete-and-Masonry.pdf" target="_blank">Army FM 5-428: Concrete and Masonry</a></li>
-				<li><a href="HOME/Military-Manuals/Army-stp21-1-Soldiers-Manual-of-Common-Tasks-Warrior-Skills-Level-1.pdf" target="_blank">Army STP 21-1: Soldiers Manual of Common Tasks - Warrior Skills Level 1</a></li>
-				<li><a href="HOME/Military-Manuals/Army-stp21-24-Soldiers-Manual-of-Common-Tasks-Warrior-Skills-Level-2-3-and-4.pdf" target="_blank">Army STP 21-24: Soldiers Manual of Common Tasks - Warrior Skills Level 2, 3, and 4</a></li>
-				<li><a href="HOME/Military-Manuals/basic-food-preparation.pdf" target="_blank">Basic Food Preparation</a></li>
-				<li><a href="HOME/Military-Manuals/Canadian-Military-FieldCraft.pdf" target="_blank">Canadian Military FieldCraft</a></li>
-				<li><a href="HOME/Military-Manuals/Civil-Disturbance-Operations.pdf" target="_blank">Civil Disturbance Operations</a></li>
-				<li><a href="HOME/Military-Manuals/Combat-Guerrila-Survival-Skills-The-Bear-Went-Over-the-Mountain.pdf" target="_blank">Combat Guerrilla Survival Skills: The Bear Went Over the Mountain</a></li>
-				<li><a href="HOME/Military-Manuals/Combat-Skills-of-the-Soldier-fm2175.pdf" target="_blank">Combat Skills of the Soldier FM 21-75</a></li>
-				<li><a href="HOME/Military-Manuals/Combat-Survival-Guerrila-Skills-Handbook-of-the-Red-Chinese.pdf" target="_blank">Combat Survival Guerrilla Skills Handbook of the Red Chinese</a></li>
-				<li><a href="HOME/Military-Manuals/How-to-Find-Your-Way.pdf" target="_blank">How to Find Your Way</a></li>
-				<li><a href="HOME/Military-Manuals/How-to-Start-and-Train-a-Militia-Unit-PM-94-1.pdf" target="_blank">How to Start and Train a Militia Unit PM 94-1</a></li>
-				<li><a href="HOME/Military-Manuals/Marine-Land-Navigation.pdf" target="_blank">Marine Land Navigation</a></li>
-				<li><a href="HOME/Military-Manuals/Mountain-Operations-FM3976.pdf" target="_blank">Mountain Operations FM 3-97.6</a></li>
-				<li><a href="HOME/Military-Manuals/National-Defense-Defence-Nationale.pdf" target="_blank">National Defense/Defence Nationale</a></li>
-				<li><a href="HOME/Military-Manuals/Ranger-Unit-Operations-Fm785.pdf" target="_blank">Ranger Unit Operations FM 7-85</a></li>
-				<li><a href="HOME/Military-Manuals/Rappelling-TC2124.pdf" target="_blank">Rappelling TC 21-24</a></li>
-				<li><a href="HOME/Military-Manuals/Rifle-Marksmanship-Expanded-MCRP31a.pdf" target="_blank">Rifle Marksmanship Expanded MCRP 3-1A</a></li>
-				<li><a href="HOME/Military-Manuals/Special-Forces-Caching-Techniques-TC-3129A.pdf" target="_blank">Special Forces Caching Techniques TC 31-29A</a></li>
-				<li><a href="HOME/Military-Manuals/Terrain-Analysis.pdf" target="_blank">Terrain Analysis</a></li>
-				<li><a href="HOME/Military-Manuals/Topographic-Operations.pdf" target="_blank">Topographic Operations</a></li>
-				<li><a href="HOME/Military-Manuals/United-States-Marine-Corps-Fmfrp-12185-April-1989Mao-Guerrila-Warfare.pdf" target="_blank">United States Marine Corps FMFRP 12-18.5 (April 1989): Mao Guerrilla Warfare</a></li>
-				<li><a href="HOME/Military-Manuals/US-Army-Combat-Training-w-Pistols-fm-323x35.pdf" target="_blank">US Army Combat Training with Pistols FM 3-23.35</a></li>
-				<li><a href="HOME/Military-Manuals/US-Army-How-to-Kill-Tanks.pdf" target="_blank">US Army How to Kill Tanks</a></li>
-				<li><a href="HOME/Military-Manuals/US-Army-Map-Reading-and-Land-Navigation.pdf" target="_blank">US Army Map Reading and Land Navigation</a></li>
-				<li><a href="HOME/Military-Manuals/US-Marine-Corp-Pistol-Markmanship.pdf" target="_blank">US Marine Corp Pistol Marksmanship</a></li>
-				<li><a href="HOME/Military-Manuals/USMC-MCRP-301A-Rifle-Marksmanship.pdf" target="_blank">USMC MCRP 3-01A: Rifle Marksmanship</a></li>
-			</ul>
-		</section>
-		
-        <section id="Nuclear-Threats">
-			<h2>Nuclear Threats</h2>
-			<ul>
-				<li><a href="HOME/Nuclear-Threats/Family-Fallout-Shelter.pdf" target="_blank">Family Fallout Shelter</a></li>
-				<li><a href="HOME/Nuclear-Threats/nuclear-war-survival-skills.pdf" target="_blank">Nuclear War Survival Skills</a></li>
-				<li><a href="HOME/Nuclear-Threats/Nuclear-Winter-Survival.pdf" target="_blank">Nuclear Winter Survival</a></li>
-				<li><a href="HOME/Nuclear-Threats/PROTECTION-IN-THE-NUCLEAR-AGE.pdf" target="_blank">Protection in the Nuclear Age</a></li>
-				<li><a href="HOME/Nuclear-Threats/Radiological-Emergency-Preparedness.pdf" target="_blank">Radiological Emergency Preparedness</a></li>
-			</ul>
-		</section>
-		
-        <section id="Old-and-New-Recipes">
-			<h2>Old & New Recipes</h2>
-			<ul>
-				<li><a href="HOME/Old-&-New-Recipes/60-gift-mixes-in-a-jar-recipes.pdf" target="_blank">60 Gift Mixes in a Jar Recipes</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/boyscout-cookbook-PDF.pdf" target="_blank">Boy Scout Cookbook</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/Camping-Recipes.pdf" target="_blank">Camping Recipes</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/Colonial-New-England-Recipes.pdf" target="_blank">Colonial New England Recipes</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/dutch-oven-cookbook.pdf" target="_blank">Dutch Oven Cookbook</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/Dutch-Oven-Grill-Bar-B-Q-recipes.pdf" target="_blank">Dutch Oven Grill Bar-B-Q Recipes</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/Famous-Recipes-from-Old-Verginia.pdf" target="_blank">Famous Recipes from Old Virginia</a></li>
-				<li><a href="HOME/Old-&-New-Recipes/nordic-ware-unusual-old-world-and-american-recipes.pdf" target="_blank">Nordic Ware: Unusual Old World and American Recipes</a></li>
-			</ul>
-		</section>
-		
-        <section id="Quick-Guides-and-Checklists">
-			<h2>Quick Guides & Checklists</h2>
-			<ul>
-				<li><a href="HOME/Quick-Guides-&-Checklists/Child-Care-Emergency-Preparedness-Toolbox.pdf" target="_blank">Child Care Emergency Preparedness Toolbox</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/Emergency-Preparedness-Guidlines-for-Levees.pdf" target="_blank">Emergency Preparedness Guidelines for Levees</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/family-supply-list.pdf" target="_blank">Family Supply List</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/FEMA-emergancy-supply-list.pdf" target="_blank">FEMA Emergency Supply List</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/Obtain-a-3-Month-Supply-in-12-Weeks.pdf" target="_blank">Obtain a 3 Month Supply in 12 Weeks</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/Practical-Emergency.pdf" target="_blank">Practical Emergency</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/Surviving-the-Unexpected-Emergency.pdf" target="_blank">Surviving the Unexpected Emergency</a></li>
-				<li><a href="HOME/Quick-Guides-&-Checklists/WATER-PURIFICATION-BY-EVAPORATION-AND-CONDENSATION.pdf" target="_blank">Water Purification by Evaporation and Condensation</a></li>
-			</ul>
-		</section>
-		
-        <section id="Shelters">
-			<h2>Shelters</h2>
-			<ul>
-				<li><a href="HOME/Shelters/How-to-Build-a-Debris-Hut.pdf" target="_blank">How to Build a Debris Hut</a></li>
-				<li><a href="HOME/Shelters/taking-shelter-building-a-safe-room.pdf" target="_blank">Taking Shelter: Building a Safe Room</a></li>
-			</ul>
-		</section>
-		
-        <section id="Survival-Manuals">
-			<h2>Survival Manuals</h2>
-			<ul>
-				<li><a href="HOME/Survival-Manuals/Adventurer-Woodstravel-Module.pdf" target="_blank">Adventurer Woodstravel Module</a></li>
-				<li><a href="HOME/Survival-Manuals/Aid-to-Survival.pdf" target="_blank">Aid to Survival</a></li>
-				<li><a href="HOME/Survival-Manuals/Alpine-Living-2008.pdf" target="_blank">Alpine Living 2008</a></li>
-				<li><a href="HOME/Survival-Manuals/Camp-Life-In-The-Woods-And-The-Tricks-Of-Trapping-And-Trap-Making.pdf" target="_blank">Camp Life In The Woods And The Tricks Of Trapping And Trap Making</a></li>
-				<li><a href="HOME/Survival-Manuals/Cold-Weather-Survival-2005.pdf" target="_blank">Cold Weather Survival 2005</a></li>
-				<li><a href="HOME/Survival-Manuals/Cold-Weather-Survival.pdf" target="_blank">Cold Weather Survival</a></li>
-				<li><a href="HOME/Survival-Manuals/Combat-Survival-Evasion.pdf" target="_blank">Combat Survival Evasion</a></li>
-				<li><a href="HOME/Survival-Manuals/deadfallssnaresb00harduoft.pdf" target="_blank">Deadfalls and Snares</a></li>
-				<li><a href="HOME/Survival-Manuals/Evers_SafetyBook_V3-How to Handle a Crisis.pdf" target="_blank">Evers Safety Book V3: How to Handle a Crisis</a></li>
-				<li><a href="HOME/Survival-Manuals/HHSPandemicInfluenzaPlan.pdf" target="_blank">HHS Pandemic Influenza Plan</a></li>
-				<li><a href="HOME/Survival-Manuals/HOME_HEALTH_EMERGENCY_PREPAREDNESS.pdf" target="_blank">Home Health Emergency Preparedness</a></li>
-				<li><a href="HOME/Survival-Manuals/How-to-Build-a-Debris-Hut.pdf" target="_blank">How to Build a Debris Hut</a></li>
-				<li><a href="HOME/Survival-Manuals/LDS-Preparedness-Manual-Handbook-2-Provident-Living.pdf" target="_blank">LDS Preparedness Manual Handbook 2: Provident Living</a></li>
-				<li><a href="HOME/Survival-Manuals/Marines-Individual-Terrorism-Survival.pdf" target="_blank">Marines Individual Terrorism Survival</a></li>
-				<li><a href="HOME/Survival-Manuals/NEWER US ARMY FM-21-76-Survival-2002.pdf" target="_blank">Newer US Army FM 21-76: Survival 2002</a></li>
-				<li><a href="HOME/Survival-Manuals/Nuclear-War-Survival-Skills.pdf" target="_blank">Nuclear War Survival Skills</a></li>
-				<li><a href="HOME/Survival-Manuals/out-of-captivity.pdf" target="_blank">Out of Captivity</a></li>
-				<li><a href="HOME/Survival-Manuals/Preserving_Game_Meats.pdf" target="_blank">Preserving Game Meats</a></li>
-				<li><a href="HOME/Survival-Manuals/SURVIVAL-EVASION-AND-RECOVERY.pdf" target="_blank">Survival Evasion and Recovery</a></li>
-				<li><a href="HOME/Survival-Manuals/Survival-In-ColdWeather-Areas.pdf" target="_blank">Survival In Cold Weather Areas</a></li>
-				<li><a href="HOME/Survival-Manuals/Survival-Water-Purification.pdf" target="_blank">Survival Water Purification</a></li>
-				<li><a href="HOME/Survival-Manuals/Survival-Wilderness-Survival.pdf" target="_blank">Survival Wilderness Survival</a></li>
-				<li><a href="HOME/Survival-Manuals/Surviving-Terrorism.pdf" target="_blank">Surviving Terrorism</a></li>
-				<li><a href="HOME/Survival-Manuals/the-ten-bushcraft-books.pdf" target="_blank">The Ten Bushcraft Books</a></li>
-				<li><a href="HOME/Survival-Manuals/Traps.pdf" target="_blank">Traps</a></li>
-				<li><a href="HOME/Survival-Manuals/Ultimate-Survival-Skills-Guide.pdf" target="_blank">Ultimate Survival Skills Guide</a></li>
-				<li><a href="HOME/Survival-Manuals/Urban-Preparation-Kit-Part-I-On.pdf" target="_blank">Urban Preparation Kit Part I On</a></li>
-				<li><a href="HOME/Survival-Manuals/USMC-Summer-Survival-Course.pdf" target="_blank">USMC Summer Survival Course</a></li>
-				<li><a href="HOME/Survival-Manuals/USMC-Winter-Survival-Course.pdf" target="_blank">USMC Winter Survival Course</a></li>
-				<li><a href="HOME/Survival-Manuals/Wilderness-Survival-Skills(2).pdf" target="_blank">Wilderness Survival Skills</a></li>
-			</ul>
-		</section>
-		
-        <section id="Traditional-Ways">
-			<h2>Traditional Ways</h2>
-			<ul>
-				<li><a href="HOME/Traditional-Ways/bushcraft-leather-work-PDF.pdf" target="_blank">Bushcraft Leather Work</a></li>
-				<li><a href="HOME/Traditional-Ways/Foxfire-One.pdf" target="_blank">Foxfire One</a></li>
-				<li><a href="HOME/Traditional-Ways/Foxfire-Three.pdf" target="_blank">Foxfire Three</a></li>
-				<li><a href="HOME/Traditional-Ways/Foxfire-Two.pdf" target="_blank">Foxfire Two</a></li>
-				<li><a href="HOME/Traditional-Ways/How-to-Build-a-Debris-Hut.pdf" target="_blank">How to Build a Debris Hut</a></li>
-				<li><a href="HOME/Traditional-Ways/How-to-make-Black-Powder.pdf" target="_blank">How to Make Black Powder</a></li>
-				<li><a href="HOME/Traditional-Ways/Rediscovering-Ancient-Egyptian-Beer.pdf" target="_blank">Rediscovering Ancient Egyptian Beer</a></li>
-				<li><a href="HOME/Traditional-Ways/the-ten-bushcraft-books.pdf" target="_blank">The Ten Bushcraft Books</a></li>
-			</ul>
-		</section>
-		
-        <section id="Water">
-			<h2>Water</h2>
-			<ul>
-				<li><a href="HOME/Water/Distillation-For-Home-Water-Treatment.pdf" target="_blank">Distillation For Home Water Treatment</a></li>
-				<li><a href="HOME/Water/giardia-water-factsheet.pdf" target="_blank">Giardia Water Factsheet</a></li>
-				<li><a href="HOME/Water/PLANTS-AS-INDICATORS-OF-GROUND-WATER.pdf" target="_blank">Plants as Indicators of Ground Water</a></li>
-				<li><a href="HOME/Water/Purifying-Water-During-an-Emergency.pdf" target="_blank">Purifying Water During an Emergency</a></li>
-				<li><a href="HOME/Water/Safe-Water-School.pdf" target="_blank">Safe Water School</a></li>
-				<li><a href="HOME/Water/Survival-Water-Purification.pdf" target="_blank">Survival Water Purification</a></li>
-				<li><a href="HOME/Water/Water_Treatment.pdf" target="_blank">Water Treatment</a></li>
-			</ul>
-		</section>
-		
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- JS will inject cards here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden flex flex-col items-center justify-center py-32 bg-white rounded-[40px] border-2 border-dashed border-slate-200">
+            <div class="p-6 bg-slate-50 rounded-full mb-6">
+                <i data-lucide="search-x" class="w-12 h-12 text-slate-300"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800">No resources found</h3>
+            <p class="text-slate-500 mt-2">Try searching for something else like "SAS" or "Plants"</p>
+            <button onclick="resetFilters()" class="mt-6 px-6 py-2.5 bg-slate-800 text-white font-bold rounded-2xl hover:bg-emerald-600 transition-colors">
+                Reset Filters
+            </button>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Survival Guide</p>
-		<a href="https://github.com/PR0M3TH3AN/Survival-Data" target="_blank">
-			<img src="https://img.shields.io/badge/GitHub-Download%20this%20project-blue?style=for-the-badge&logo=github" alt="Download this project on GitHub">
-		  </a>
+
+    <!-- Footer -->
+    <footer class="mt-20 bg-slate-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-800 pb-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="shield" class="w-8 h-8 text-emerald-400"></i>
+                        <span class="text-xl font-black uppercase tracking-tight">Survival Library</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        A comprehensive offline-first knowledge base for critical survival, medical, and radio operations. Data redundancy is your best friend in times of crisis.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-slate-200">Project Mission</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            100% Offline Access when cached
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            Public domain military manuals
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            Free and Open Source community data
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-slate-200">Connect & Contribute</h4>
+                    <a href="https://github.com/PR0M3TH3AN/Survival-Data" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-2xl font-bold transition-all shadow-lg shadow-emerald-900/20 group">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                        Download on GitHub
+                        <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold uppercase tracking-widest text-slate-500 text-center">
+                <p>&copy; 2024 PR0M3TH3AN - Survival Data Project</p>
+                <div class="flex gap-8">
+                    <span>MIT Licensed</span>
+                    <span>Encrypted Mirror Available</span>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 p-4 bg-emerald-600 text-white rounded-2xl shadow-2xl opacity-0 translate-y-10 transition-all duration-300 z-50">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <script>
+        const INITIAL_DATA = [
+            {
+                category: "Basics",
+                icon: "map",
+                items: [
+                    { title: "How to Find Your Way", url: "HOME/Basics/How-to-Find-Your-Way.pdf" },
+                    { title: "SAS Survival Handbook", url: "HOME/Basics/SAS.Survival.Handbook.pdf" },
+                    { title: "The SAS Self-Defense Handbook (John Lofty Wiseman)", url: "HOME/Basics/The-SAS-Self-Defense Handbook (John Lofty Wiseman).pdf" },
+                    { title: "US Army Survival Manual", url: "HOME/Basics/US-Army-Survival-Manual.pdf" }
+                ]
+            },
+            {
+                category: "Edible and Medicinal Plants",
+                icon: "leaf",
+                items: [
+                    { title: "A Complete Handbook of Nature Cures", url: "HOME/Edible-and-Medicinal-Plants/A-Complete-Handbook-of-Nature-Cures.pdf" },
+                    { title: "Anticancer Therapeutics", url: "HOME/Edible-and-Medicinal-Plants/Anticancer-Therapeutics.pdf" },
+                    { title: "Common Edible Mushrooms", url: "HOME/Edible-and-Medicinal-Plants/Common-Edible-Mushrooms.pdf" },
+                    { title: "Crow Indian Recipes & Herbal Medicines", url: "HOME/Edible-and-Medicinal-Plants/Crow-Indian-Recipes-Herbal-Medicines.pdf" },
+                    { title: "Dale Pendell Pharmako/Poeia", url: "HOME/Edible-and-Medicinal-Plants/Dale-Pendell-Pharmako-Poeia.pdf" },
+                    { title: "Edible and Medicinal Plants", url: "HOME/Edible-and-Medicinal-Plants/Edible-and-Medicinal-Plants.pdf" },
+                    { title: "Edible Wild Plants", url: "HOME/Edible-and-Medicinal-Plants/Edible-Wild-Plants.pdf" },
+                    { title: "Ethnobotany of the Forest Indians", url: "HOME/Edible-and-Medicinal-Plants/Ethnobotany-of-the-Forest-Indians.pdf" },
+                    { title: "Healing Pets With Alternative Medicine", url: "HOME/Edible-and-Medicinal-Plants/Healing-Pets-With-Alternative-Medicine.pdf" },
+                    { title: "Herbal PDR", url: "HOME/Edible-and-Medicinal-Plants/Herbal-PDRsmall.pdf" },
+                    { title: "Medicinal Plants in Folk Tradition (2004) - Allen & Hatfield", url: "HOME/Edible-and-Medicinal-Plants/Medicinal-Plants-in-Folk-Tradition-2004-Allen-Hatfield.pdf" },
+                    { title: "Survival: Edible & Medicinal Plants", url: "HOME/Edible-and-Medicinal-Plants/Survival-Edible-Medicinal-Plants.pdf" },
+                    { title: "Survival: How to Make Herbal Preparations", url: "HOME/Edible-and-Medicinal-Plants/survival-how-to-make-herbal-preparations.pdf" },
+                    { title: "Survival Medicine", url: "HOME/Edible-and-Medicinal-Plants/Survival-Medicine.pdf" },
+                    { title: "Useful Wild Plants of the United States and Canada", url: "HOME/Edible-and-Medicinal-Plants/Useful-Wild-Plants-of-the-United-States-and-Canada.pdf" },
+                    { title: "WHO Monographs on Selected Medicinal Plants - Vol 2", url: "HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants-Vol-2.pdf" },
+                    { title: "WHO Monographs on Selected Medicinal Plants - Vol 3", url: "HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants-Vol-3.pdf" },
+                    { title: "WHO Monographs on Selected Medicinal Plants - Vol 4", url: "HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants-Volume-4.pdf" },
+                    { title: "WHO Monographs on Selected Medicinal Plants", url: "HOME/Edible-and-Medicinal-Plants/WHO-Monographs-on-Selected-Medicinal-Plants.pdf" }
+                ]
+            },
+            {
+                category: "Electronics",
+                icon: "zap",
+                items: [{ title: "The Prepper Phone", url: "HOME/Electronics/The-Prepper-Phone.pdf" }]
+            },
+            {
+                category: "Food Preservation",
+                icon: "utensils",
+                items: [
+                    { title: "Canning Foods", url: "HOME/Food-Preservation/Canning-Foods.pdf" },
+                    { title: "Fermenting Recipe Guidebook", url: "HOME/Food-Preservation/Fermenting_Recipe_Guidebook.pdf" },
+                    { title: "Jerky Recipes", url: "HOME/Food-Preservation/Jerky-Recipes.pdf" },
+                    { title: "Preparing and Canning Fermented Foods and Pickled Vegetables", url: "HOME/Food-Preservation/Preparing-and-Canning-Fermented-Foods-and-Pickled-Vegtables.pdf" },
+                    { title: "Preservation of Fish and Meat", url: "HOME/Food-Preservation/Preservation_of_Fish_and_Meat.pdf" },
+                    { title: "Preserving Food: Drying Fruits and Vegetables", url: "HOME/Food-Preservation/Preserving-Food-Drying-Fruits-And-Vegetables-.pdf" },
+                    { title: "Small Scale Food Drying Technologies", url: "HOME/Food-Preservation/SmallScale-Food-Drying-Technologies.pdf" },
+                    { title: "Solar Dehydrator", url: "HOME/Food-Preservation/Solar-Dehydrator.pdf" },
+                    { title: "Traditional Fermented Food and Beverages", url: "HOME/Food-Preservation/Traditional-Fermented-Food-and-Beverages.pdf" }
+                ]
+            },
+            {
+                category: "Foraging",
+                icon: "search",
+                items: [
+                    { title: "A Mini Foraging Guide", url: "HOME/Foraging/a-mini-foraging-guide.pdf" },
+                    { title: "Alaska Forage Manual", url: "HOME/Foraging/Alaska-Forage-Manual.pdf" },
+                    { title: "Colorado Forage Guide", url: "HOME/Foraging/Colorado-forage-guide.pdf" },
+                    { title: "Edible and Poisonous Mushroom Guide", url: "HOME/Foraging/Edible-and-Poisonous-Mushroom-Guide.pdf" },
+                    { title: "Guide to Common Macrofungi in Eastern Forests", url: "HOME/Foraging/Guide-to-Common-Macrofungi-in-Eastern-Forests.pdf" },
+                    { title: "Guide to Wild Edible Plants Directory", url: "HOME/Foraging/Guide-to-Wild-Edible-Plants-Directory.pdf" },
+                    { title: "Mushrooms From Forest to Plate", url: "HOME/Foraging/Mushrooms-From-Forest-to-Plate.pdf" },
+                    { title: "Ontario Nature Forest Foraging Guide", url: "HOME/Foraging/Ontario_Nature_Forest_Foraging_Guide_official.pdf" },
+                    { title: "Pocket Guide to Riverside Foraging", url: "HOME/Foraging/Pocket-Guide-to-Riverside-Foraging.pdf" },
+                    { title: "Pocket Guide to Urban Foraging", url: "HOME/Foraging/Pocket-Guide-to-Urban-Foraging.pdf" },
+                    { title: "Shellfish Foraging Guide", url: "HOME/Foraging/Shellfish-Foraging-Guide-to-Port-Susan-and-South-Skigit-Bay.pdf" },
+                    { title: "Urban Foraging", url: "HOME/Foraging/Urban-Foraging.pdf" }
+                ]
+            },
+            {
+                category: "Medicine",
+                icon: "stethoscope",
+                items: [
+                    { title: "A Book for Midwives", url: "HOME/Medicine/A-Book-for-Midwives.pdf" },
+                    { title: "Emergency War Surgery", url: "HOME/Medicine/Emergency-War-Surgery.pdf" },
+                    { title: "Survival and Austere Medicine", url: "HOME/Medicine/Survival-and-Austere-Medicine.pdf" },
+                    { title: "Where There is No Dentist", url: "HOME/Medicine/Where-There-is-No-Dentist.pdf" },
+                    { title: "Where There is No Doctor", url: "HOME/Medicine/Where_there_is_no_doctor.pdf" }
+                ]
+            },
+            {
+                category: "Military Manuals",
+                icon: "shield",
+                items: [
+                    { title: "Army FM 20-3: Camouflage", url: "HOME/Military-Manuals/Army-fm20-3-Camouflage-Concealment-and-Decoys.pdf" },
+                    { title: "Army FM 31-70: Cold Weather", url: "HOME/Military-Manuals/Army-fm31-70-Basic-Cold-Weather-Manual.pdf" },
+                    { title: "Ranger Unit Operations FM 7-85", url: "HOME/Military-Manuals/Ranger-Unit-Operations-Fm785.pdf" },
+                    { title: "US Army Map Reading & Navigation", url: "HOME/Military-Manuals/US-Army-Map-Reading-and-Land-Navigation.pdf" }
+                ]
+            },
+            {
+                category: "Nuclear Threats",
+                icon: "radiation",
+                items: [
+                    { title: "Nuclear War Survival Skills", url: "HOME/Nuclear-Threats/nuclear-war-survival-skills.pdf" },
+                    { title: "Protection in the Nuclear Age", url: "HOME/Nuclear-Threats/PROTECTION-IN-THE-NUCLEAR-AGE.pdf" },
+                    { title: "Radiological Emergency Preparedness", url: "HOME/Nuclear-Threats/Radiological-Emergency-Preparedness.pdf" }
+                ]
+            },
+            {
+                category: "Water",
+                icon: "droplets",
+                items: [
+                    { title: "Distillation for Home Water Treatment", url: "HOME/Water/Distillation-For-Home-Water-Treatment.pdf" },
+                    { title: "Survival Water Purification", url: "HOME/Water/Survival-Water-Purification.pdf" },
+                    { title: "Water Treatment Guide", url: "HOME/Water/Water_Treatment.pdf" }
+                ]
+            }
+        ];
+
+        let currentSearch = '';
+        let currentCategory = 'All';
+        const expandedSections = new Set();
+
+        const resultsGrid = document.getElementById('resultsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const filterBar = document.getElementById('filterBar');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        function init() {
+            // Render category pills
+            INITIAL_DATA.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-pill px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap bg-white border border-slate-200 text-slate-600 hover:bg-slate-50';
+                btn.textContent = cat.category;
+                btn.onclick = () => filterCategory(cat.category);
+                btn.setAttribute('data-category', cat.category);
+                filterBar.appendChild(btn);
+            });
+
+            render();
+            lucide.createIcons();
+
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value.toLowerCase();
+                render();
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    scrollTopBtn.classList.remove('opacity-0', 'translate-y-10');
+                } else {
+                    scrollTopBtn.classList.add('opacity-0', 'translate-y-10');
+                }
+            });
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-pill').forEach(btn => {
+                if (btn.getAttribute('data-category') === cat) {
+                    btn.classList.add('bg-slate-800', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-white', 'text-slate-600');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'text-white', 'shadow-md');
+                    btn.classList.add('bg-white', 'text-slate-600');
+                }
+            });
+            render();
+        }
+
+        function resetFilters() {
+            searchInput.value = '';
+            currentSearch = '';
+            filterCategory('All');
+        }
+
+        function toggleExpand(catName) {
+            if (expandedSections.has(catName)) {
+                expandedSections.delete(catName);
+            } else {
+                expandedSections.add(catName);
+            }
+            render();
+        }
+
+        function render() {
+            resultsGrid.innerHTML = '';
+            
+            const filtered = INITIAL_DATA.map(section => {
+                const items = section.items.filter(item => item.title.toLowerCase().includes(currentSearch));
+                return { ...section, items };
+            }).filter(section => {
+                const matchesCat = currentCategory === 'All' || section.category === currentCategory;
+                return matchesCat && section.items.length > 0;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                resultsGrid.classList.add('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                resultsGrid.classList.remove('hidden');
+            }
+
+            filtered.forEach(section => {
+                const isExpanded = expandedSections.has(section.category);
+                const displayItems = isExpanded ? section.items : section.items.slice(0, 6);
+                const hasMore = section.items.length > 6;
+
+                const card = document.createElement('div');
+                card.className = 'group flex flex-col bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 card-hover transition-all duration-300';
+                
+                let itemsHtml = displayItems.map(item => `
+                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all group/item">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-white flex items-center justify-center text-slate-400 group-hover/item:text-emerald-600 transition-colors">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-sm font-semibold leading-tight line-clamp-2">${item.title}</span>
+                    </a>
+                `).join('');
+
+                card.innerHTML = `
+                    <div class="p-6 pb-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-slate-50 rounded-2xl group-hover:bg-emerald-50 transition-colors">
+                                <i data-lucide="${section.icon}" class="w-5 h-5 text-emerald-600"></i>
+                            </div>
+                            <span class="text-xs font-black uppercase tracking-widest text-slate-400 px-3 py-1 bg-slate-50 rounded-full">
+                                ${section.items.length} Files
+                            </span>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">
+                            ${section.category}
+                        </h2>
+                    </div>
+                    <div class="flex-1 p-4 pt-0">
+                        <div class="space-y-1">${itemsHtml}</div>
+                    </div>
+                    ${hasMore ? `
+                        <button onclick="toggleExpand('${section.category}')" class="mx-4 mb-4 p-3 flex items-center justify-center gap-2 bg-slate-50 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all">
+                            ${isExpanded ? 'Show Less <i data-lucide="chevron-up" class="w-3 h-3"></i>' : `View ${section.items.length - 6} more files <i data-lucide="chevron-down" class="w-3 h-3"></i>`}
+                        </button>
+                    ` : ''}
+                `;
+                resultsGrid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 </html>
